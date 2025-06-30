@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalkulator Luas Trapesium</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #bc5c5c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: rgb(255, 255, 255);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #cb67b6;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #007BFF;
+      color: rgb(17, 13, 13);
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #bbd0ba;
+      border-left: 5px solid #28a745;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Kalkulator Luas Trapesium</h2>
+  <form id="trapesiumForm">
+    <label for="sisiA">Panjang Sisi Atas (a):</label>
+    <input type="number" id="sisiA" name="sisiA" required />
+
+    <label for="sisiB">Panjang Sisi Bawah (b):</label>
+    <input type="number" id="sisiB" name="sisiB" required />
+
+    <label for="tinggi">Tinggi (t):</label>
+    <input type="number" id="tinggi" name="tinggi" required />
+
+    <button type="submit">Hitung Luas</button>
+  </form>
+
+  <div id="hasil" class="result">
+    Luas Trapesium: <span id="luas"></span>
+  </div>
+</div>
+
+<script>
+  document.getElementById("trapesiumForm").addEventListener("submit", function(event){
+    event.preventDefault();
+
+    const a = parseFloat(document.getElementById("sisiA").value);
+    const b = parseFloat(document.getElementById("sisiB").value);
+    const t = parseFloat(document.getElementById("tinggi").value);
+
+    if (isNaN(a) || isNaN(b) || isNaN(t)) {
+      alert("Harap masukkan semua nilai dengan benar.");
+      return;
+    }
+
+    const luas = ((a + b) / 2) * t;
+    document.getElementById("luas").textContent = luas.toFixed(2) + " satuan²";
+    document.getElementById("hasil").style.display = "block";
+  });
+</script>
+
+</body>
+</html>
